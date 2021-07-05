@@ -11,5 +11,13 @@ exports.questionTwo = () => {
 
 const answerTwo = (str) => {
   //code here
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  let vowelCount = 0;
+  for (let i = 0; i < str.length; i++){
+    if (vowels.includes(str[i])){
+      vowelCount++;
+    }
+  }
+  return vowelCount;
   
 }
