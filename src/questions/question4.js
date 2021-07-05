@@ -31,5 +31,28 @@ exports.questionFour = () => {
 
 class HighScores {
   //code here
+  constructor(scoresInput){
+    this.scoresInput = scoresInput;
+  }
+
+  get scores() {
+    return this.scoresInput;
+  }
+
+  get latest() {
+    return this.scoresInput[this.scoresInput.length-1];
+  }
+
+  get personalBest() {
+    let orderedScores = this.scoresInput;
+    orderedScores.sort((a,b)=>{return b-a;});
+    return orderedScores[0];
+  }
+
+  get personalTopThree() {
+    let orderedScores = this.scoresInput;
+    orderedScores.sort((a,b)=>{return b-a;});
+    return orderedScores.slice(0,3);
+  }
 
 }
