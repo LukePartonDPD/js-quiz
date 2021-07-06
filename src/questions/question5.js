@@ -35,7 +35,6 @@ function getFilteredEmployees(employees) {
 
     return Promise.resolve(filteredEmployees);
   } catch (err){
-    console.log('Something has gone wrong');
-    console.log(err);
+    return Promise.reject(new Error('Error while filtering!'));
   }
 }
