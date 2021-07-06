@@ -13,7 +13,11 @@ const answerFive = () => {
 
   //code here
   return axios.get(url)
-    .then(response => {return getFilteredEmployees(response.data);});
+    .then(response => {return getFilteredEmployees(response.data);})
+    .catch(error => {
+      console.log('Something has gone wrong!');
+      console.log(error);
+    });
 }
 
 
