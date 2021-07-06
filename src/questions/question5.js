@@ -14,10 +14,6 @@ const answerFive = () => {
   //code here
   return axios.get(url)
     .then(response => {return getFilteredEmployees(response.data);});
-
-  //return filteredEmployeesPromise;
-
-  
 }
 
 
