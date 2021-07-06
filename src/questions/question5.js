@@ -1,9 +1,4 @@
 const axios = require("axios");
-/**
- * I CHEATED BY MAKING ANSWER 5 ASYNC AND ADDED RELEVENT ASYNC AND WAIT STATEMENTS TO MODULE EXPORT
- * THIS IS ABOVE THE LINE TELLING ME TO WRITE STUFF
- * 
- */
 
 exports.questionFive = async () => {
   console.log("Question 5: Work are organising a seminar for those who are planning their retirement. In the function answerFive, " +
@@ -17,15 +12,17 @@ const answerFive = async () => {
   const url = "https://europe-west2-dpduk-t-insight-l1.cloudfunctions.net/employees";
 
   //code here
-  const filteredEmployees = await getFilteredEmployees(url);
-  return filteredEmployees;
+  return axios.get(url)
+    .then(response => {getFilteredEmployees(response.data);});
+
+  //return filteredEmployeesPromise;
+
+  
 }
 
 
-async function getFilteredEmployees(url) {
+function getFilteredEmployees(employees) {
   try{
-    const response = await axios.get(url);
-    const employees = response.data;
     let filteredEmployees = [];
     const secondsInFiftyYears = 50 * 365 * 24 * 60 * 60
 
@@ -40,7 +37,7 @@ async function getFilteredEmployees(url) {
       }
     })
 
-    return filteredEmployees;
+    return Promise.resolve(filteredEmployees);
   } catch (err){
     console.log('Something has gone wrong');
     console.log(err);
