@@ -5,7 +5,7 @@ exports.questionFive = () => {
     "make a HTTP GET request using axios with the url listed below and return a filtered array of employees where their age is equal or greater than 50." +
     "(Hint: axios is a promised based library, consider how to handle this so the data is returned. ");
   console.log("axios docs can be found here: https://github.com/axios/axios, guide can be found here: https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/");
-  console.log( answerFive());
+  console.log(answerFive());
 }
 
 const answerFive = () => {
