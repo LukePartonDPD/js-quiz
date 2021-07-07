@@ -14,11 +14,8 @@ exports.questionFive = async () => {
 }
 
 const answerFive = async () => {
-  const url = "https://europe-west2-dpduk-t-insight-l1.cloudfunctions.net/employees";
-
   //code here
-  const filteredEmployees = await getFilteredEmployees(url);
-  return filteredEmployees;
+  return await getFilteredEmployees("https://europe-west2-dpduk-t-insight-l1.cloudfunctions.net/employees");
 }
 
 

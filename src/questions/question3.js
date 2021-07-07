@@ -20,15 +20,22 @@ exports.questionThree = () => {
     name: "Bart"
   }])); //expected result: "Bart"
   console.log(answerThree([])); //expected result: ""
+  console.log(answerThree([{
+    name: "Bart"
+  }, {
+    name: "Lisa"
+  }, {
+    name: "Maggie"
+  }, {name: "Greg"}, {name: "Luke"}])); //expected result:: "Bart, Lisa & Maggie"
 }
 
 const answerThree = (names) => {
   //code here
-  if (names.length == 0){
+  if (names.length === 0){
     return '';
-  } else if (names.length == 1){
+  } else if (names.length === 1){
     return names[0].name;
-  } else if(names.length == 2){
+  } else if(names.length === 2){
     return names[0].name + ' & ' + names[1].name;
   } else {
     let firstPart = '';
