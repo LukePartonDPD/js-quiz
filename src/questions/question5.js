@@ -15,31 +15,43 @@ exports.questionFive = async () => {
 
 const answerFive = async () => {
   //code here
-  return await getFilteredEmployees("https://europe-west2-dpduk-t-insight-l1.cloudfunctions.net/employees");
-}
+  const url = "https://europe-west2-dpduk-t-insight-l1.cloudfunctions.net/employees"
+  //return await getFilteredEmployees("https://europe-west2-dpduk-t-insight-l1.cloudfunctions.net/employees");
 
-
-async function getFilteredEmployees(url) {
   try{
     const response = await axios.get(url);
-    const employees = response.data;
-    let filteredEmployees = [];
-    const secondsInFiftyYears = 50 * 365 * 24 * 60 * 60
-
-    //filter employee list
-    let employeeDate;
-    let secondsAlive;
-    employees.forEach(employee => {
-      employeeDate = new Date(employee.dateOfBirth);
-      secondsAlive = (Date.now()/1000) - (employeeDate.getTime()/1000);
-      if (secondsAlive >= secondsInFiftyYears){
-        filteredEmployees.push(employee);
-      }
-    })
-
-    return filteredEmployees;
-  } catch (err){
-    console.log('Something has gone wrong');
-    console.log(err);
+    return response.data.filter(employee => isDateFiftyYearsAgo(new Date(employee.dateOfBirth)));
+  } catch (e){
+    console.log('Something has gone wrong!');
+    console.log(e);
   }
 }
+
+function isDateFiftyYearsAgo(inputDate){
+  return ((Date.now()/1000) - (inputDate.getTime()/1000)) >= (50 * 365 * 24 * 60 * 60);
+}
+
+// async function getFilteredEmployees(url) {
+//   try{
+//     const response = await axios.get(url);
+//     const employees = response.data;
+//     let filteredEmployees = [];
+//     const secondsInFiftyYears = 50 * 365 * 24 * 60 * 60
+
+//     //filter employee list
+//     let employeeDate;
+//     let secondsAlive;
+//     employees.forEach(employee => {
+//       employeeDate = new Date(employee.dateOfBirth);
+//       secondsAlive = (Date.now()/1000) - (employeeDate.getTime()/1000);
+//       if (secondsAlive >= secondsInFiftyYears){
+//         filteredEmployees.push(employee);
+//       }
+//     })
+
+//     return filteredEmployees;
+//   } catch (err){
+//     console.log('Something has gone wrong');
+//     console.log(err);
+//   }
+// }
