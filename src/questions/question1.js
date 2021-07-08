@@ -10,10 +10,14 @@ exports.questionOne = () => {
 
 const answerOne = (str) => {
   //code here
-  let newString = '';
-  for (let i = str.length-1; i >= 0; i--){
-    newString = newString + str[i];
-  }
-  return newString;
+  // let newString = '';
+  // for (let i = str.length-1; i >= 0; i--){
+  //   newString = newString + str[i];
+  // }
+  // return newString;
+ 
+  return str.split('')
+    .reverse()
+    .join('');
   
 }
