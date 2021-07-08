@@ -44,9 +44,11 @@ class HighScores {
   }
 
   get personalBest() {
-    let orderedScores = this.scoresInput;
-    orderedScores.sort((a,b)=>{return b-a;});
-    return orderedScores[0];
+    // let orderedScores = this.scoresInput;
+    // orderedScores.sort((a,b)=>{return b-a;});
+    // return orderedScores[0];
+
+    return Math.max(...this.scoresInput);
   }
 
   get personalTopThree() {
