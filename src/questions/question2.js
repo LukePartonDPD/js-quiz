@@ -11,14 +11,19 @@ exports.questionTwo = () => {
 
 const answerTwo = (str) => {
   //code here
+  // const vowels = ['a', 'e', 'i', 'o', 'u'];
+  // let vowelCount = 0;
+  // const lowerStr = str.toLowerCase();
+  // for (let i = 0; i < lowerStr.length; i++){
+  //   if (vowels.includes(lowerStr[i])){
+  //     vowelCount++;
+  //   }
+  // }
+  // return vowelCount;
+
   const vowels = ['a', 'e', 'i', 'o', 'u'];
-  let vowelCount = 0;
-  const lowerStr = str.toLowerCase();
-  for (let i = 0; i < lowerStr.length; i++){
-    if (vowels.includes(lowerStr[i])){
-      vowelCount++;
-    }
-  }
-  return vowelCount;
+  return str.toLowerCase()
+    .split('')
+    .reduce((vowelCount, currChar) => {return vowelCount + (vowels.includes(currChar) ? 1 : 0)}, 0)
   
 }
