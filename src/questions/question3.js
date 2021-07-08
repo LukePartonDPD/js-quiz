@@ -31,19 +31,33 @@ exports.questionThree = () => {
 
 const answerThree = (names) => {
   //code here
-  if (names.length === 0){
-    return '';
-  } else if (names.length === 1){
-    return names[0].name;
-  } else if(names.length === 2){
-    return names[0].name + ' & ' + names[1].name;
-  } else {
-    let firstPart = '';
-    for (let i = 0; i <= names.length-3; i++){
-      firstPart = firstPart + names[i].name + ', '
+  // if (names.length === 0){
+  //   return '';
+  // } else if (names.length === 1){
+  //   return names[0].name;
+  // } else if(names.length === 2){
+  //   return names[0].name + ' & ' + names[1].name;
+  // } else {
+  //   let firstPart = '';
+  //   for (let i = 0; i <= names.length-3; i++){
+  //     firstPart = firstPart + names[i].name + ', '
+  //   }
+  //   let secondPart = names[names.length-2].name + ' & ' + names[names.length-1].name
+  //   return firstPart + secondPart;
+  // }
+
+  const outputArray = []
+  while(names.length){
+    let currentWord = names.pop().name;
+    if (outputArray.length === 0){
+      outputArray.unshift(currentWord)
     }
-    let secondPart = names[names.length-2].name + ' & ' + names[names.length-1].name
-    return firstPart + secondPart;
+    else if (outputArray.length === 1){
+      outputArray.unshift(currentWord, ' & ')
+    }
+    else{
+      outputArray.unshift(currentWord, ', ')
+    }
   }
-  
+  return outputArray.join('')
 }
